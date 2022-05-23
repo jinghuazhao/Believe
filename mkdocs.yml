@@ -1,0 +1,19 @@
+site_name: Believe
+repo_url: https://github.com/jinghuazhao/Believe
+edit_uri: ""
+nav:
+    - "": README.md
+theme:
+    name: mkdocs
+    nav_style: dark
+    highlightjs: true
+    hljs_languages:
+        - Bash
+        - HTML
+        - Java
+        - JavaScript
+        - Perl
+        - Python
+        - R
+        - rust
+        - yaml
