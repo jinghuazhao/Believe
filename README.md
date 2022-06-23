@@ -1,6 +1,6 @@
 # Believe analysis
 
-- CSD3 location: ~/rds/post_qc_data/believe
+- CSD3 location: ~/rds/[rds-jmmh2-]post_qc_data/believe
 - Web: [https://jinghuazhao.github.io/Believe](https://jinghuazhao.github.io/Believe).
 
 A growing list of scripts.
