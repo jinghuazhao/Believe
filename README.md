@@ -6,9 +6,9 @@
 A growing list of scripts.
 
 ```
-0_data.sh
+1_desc.sh
 ```
 
-## 0. Data extraction
+## 1. Descriptive analysis
 
-`0_data.sh` is an instance of this. It is hoped to protoype some `canonical options` for handling relatedness in the study.
+`1_desc.sh` is to extract data and to protoype some `canonical options` for handling relatedness in the study.
