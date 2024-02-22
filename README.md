@@ -2,10 +2,10 @@
 
 - Web: [https://jinghuazhao.github.io/Believe](https://jinghuazhao.github.io/Believe).
 - CSD3 location: ~/rds/[rds-jmmh2-]post_qc_data/believe
-    * the BELIEVE TOPMed imputation data by Regeneron for the full ~72,000 participants.
-~/rds/[rds-jmmh2-post]_qc_data/believe/genotype/imputed where the new files have
-‘Freeze_Two’ in the name instead of ‘Freeze_One’.
-    * PCs for the full dataset are in place (counterpart to the sequenced variants,
+    * TOPMed imputation data by Regeneron for the full ~72,000 participants.
+~/rds/[rds-jmmh2-post]_qc_data/believe/genotype/imputed where files have `Freeze_Two`
+ in the name instead of `Freeze_One`.
+    * PCs in place (counterpart to the sequenced variants,
 ~/rds/[rds-jmmh2-]post_qc_data/believe/genotype/genomewide/plink/aug_2023??).
 
 A growing list of scripts.
