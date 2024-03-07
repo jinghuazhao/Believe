@@ -20,3 +20,7 @@ A growing list of scripts.
 ## 1. Descriptive analysis
 
 `1_desc.sh` is to extract data and to protoype some `canonical options` for handling relatedness in the study.
+
+## GxE project
+
+See <https://github.com/jinghuazhao/Mixed-Models>.
