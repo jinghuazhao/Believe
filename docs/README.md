@@ -25,4 +25,4 @@ A growing list of scripts.
 
 See <https://github.com/jinghuazhao/Mixed-Models>.
 
-![](2024-03-06B.jpg)
+![](t2d.jpg)
