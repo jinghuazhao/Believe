@@ -23,4 +23,6 @@ A growing list of scripts.
 
 ## GxE project
 
+![](2024-03-06B.jpg)
+
 See <https://github.com/jinghuazhao/Mixed-Models>.
