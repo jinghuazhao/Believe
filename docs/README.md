@@ -20,7 +20,3 @@ A growing list of scripts.
 ## 1. Descriptive analysis
 
 `1_desc.sh` is to extract data and to protoype some `canonical options` for handling relatedness in the study.
-
-## References
-
-Suzuki K, et al (2024). Genetic drivers of heterogeneity in type 2 diabetes pathophysiology. **Nature**, <https://doi.org/10.1038/s41586-024-07019-6>.

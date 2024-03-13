@@ -3,7 +3,7 @@ repo_url: https://github.com/jinghuazhao/Believe
 edit_uri: ""
 nav:
     - "": README.md
-    - GxE: gxe.md
+    - T2D: t2d.md
 theme:
     name: mkdocs
     nav_style: dark
