@@ -1,8 +1,9 @@
-# T2D GxE project
-
-See <https://github.com/jinghuazhao/Mixed-Models>.
+# T2D projects
 
 ![](t2d.jpg)
+
+- GxE. See <https://github.com/jinghuazhao/Mixed-Models>.
+- GWAS. See references below.
 
 ## References
 
