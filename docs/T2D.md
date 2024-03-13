@@ -1,6 +1,6 @@
 # T2D projects
 
-![](t2d.jpg)
+![](T2D.jpg)
 
 - GWAS. See references below.
 - GxE. See <https://github.com/jinghuazhao/Mixed-Models>.
