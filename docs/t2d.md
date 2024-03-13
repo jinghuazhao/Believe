@@ -2,8 +2,8 @@
 
 ![](t2d.jpg)
 
-- GxE. See <https://github.com/jinghuazhao/Mixed-Models>.
 - GWAS. See references below.
+- GxE. See <https://github.com/jinghuazhao/Mixed-Models>.
 
 ## References
 
