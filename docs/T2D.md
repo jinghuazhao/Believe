@@ -2,7 +2,7 @@
 
 ![](T2D.jpg)
 
-- GWAS. See references below.
+- GWAS. See Zuzuki K, et al. (2024)..
 - GxE. See <https://github.com/jinghuazhao/Mixed-Models>.
 
 ## References
