@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Believe</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Note - Believe</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/Bash.min.js"></script>
@@ -26,10 +26,10 @@
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href=".">Believe</a>
+                <a class="navbar-brand" href="..">Believe</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -39,14 +39,14 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link"></a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../T2D/" class="nav-link">T2D</a>
+                            </li>
                             <li class="navitem active">
-                                <a href="." class="nav-link"></a>
-                            </li>
-                            <li class="navitem">
-                                <a href="T2D/" class="nav-link">T2D</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="Notes/" class="nav-link">Note</a>
+                                <a href="./" class="nav-link">Note</a>
                             </li>
                         </ul>
 
@@ -57,12 +57,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../T2D/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="T2D/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -87,12 +87,62 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#believe-analysis" class="nav-link">Believe analysis</a>
+            <li class="nav-item" data-level="1"><a href="#motes" class="nav-link">Motes</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#1-descriptive-analysis" class="nav-link">1. Descriptive analysis</a>
+            <li class="nav-item" data-level="2"><a href="#running-a-slurm-job" class="nav-link">Running a SLURM job</a>
               <ul class="nav flex-column">
               </ul>
             </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#usrbinbash" class="nav-link">!/usr/bin/bash</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-job-namecsd3" class="nav-link">SBATCH --job-name=csd3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-accountpeters-sl3-cpu" class="nav-link">SBATCH --account=PETERS-SL3-CPU</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-partitioncclake-himem" class="nav-link">SBATCH --partition=cclake-himem</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-mem28800" class="nav-link">SBATCH --mem=28800</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-time120000" class="nav-link">SBATCH --time=12:00:00</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-output_csd3o" class="nav-link">SBATCH --output=_csd3.o</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#sbatch-error_csd3e" class="nav-link">SBATCH --error=_csd3.e</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#survival-regression-modeling-the-time-between-the-first" class="nav-link">Survival regression modeling the time between the first</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#and-second-recurrence-of-an-infection-in-kidney-patients" class="nav-link">and second recurrence of an infection in kidney patients.</a>
+              <ul class="nav flex-column">
               </ul>
             </li>
         </ul>
@@ -100,25 +150,45 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="believe-analysis">Believe analysis</h1>
-<p>Web: <a href="https://jinghuazhao.github.io/Believe">https://jinghuazhao.github.io/Believe</a></p>
-<p>CSD3 location: <code>~/rds/[rds-jmmh2-]post_qc_data/believe</code></p>
+<h1 id="motes">Motes</h1>
+<h2 id="running-a-slurm-job">Running a SLURM job</h2>
 <ul>
-<li>
-<p>TOPMed imputation data by Regeneron for the full ~72,000 participants. 
-<code>~/rds/[rds-jmmh2-post]_qc_data/believe/genotype/imputed</code> where files have <code>Freeze_Two</code>
- in the name instead of <code>Freeze_One</code>.</p>
-</li>
-<li>
-<p>PCs in place (counterpart to the sequenced variants,
-<code>~/rds/[rds-jmmh2-]post_qc_data/believe/genotype/genomewide/plink/aug_2023</code>??).</p>
-</li>
+<li>Script, <a href="../csd3.sb">csd3.sb</a>. 
+```bash</li>
 </ul>
-<p>A growing list of scripts.</p>
-<pre><code>1_desc.sh
-</code></pre>
-<h2 id="1-descriptive-analysis">1. Descriptive analysis</h2>
-<p><code>1_desc.sh</code> is to extract data and to protoype some <code>canonical options</code> for handling relatedness in the study.</p></div>
+<h1 id="usrbinbash">!/usr/bin/bash</h1>
+<h1 id="sbatch-job-namecsd3">SBATCH --job-name=<em>csd3</em></h1>
+<h1 id="sbatch-accountpeters-sl3-cpu">SBATCH --account=PETERS-SL3-CPU</h1>
+<h1 id="sbatch-partitioncclake-himem">SBATCH --partition=cclake-himem</h1>
+<h1 id="sbatch-mem28800">SBATCH --mem=28800</h1>
+<h1 id="sbatch-time120000">SBATCH --time=12:00:00</h1>
+<h1 id="sbatch-output_csd3o">SBATCH --output=_csd3.o</h1>
+<h1 id="sbatch-error_csd3e">SBATCH --error=_csd3.e</h1>
+<p>export TMPDIR=/rds/user/$USER/hpc-work/</p>
+<p>. /etc/profile.d/modules.sh
+module purge
+module load rhel7/default-ccl
+module load ceuadmin/R/4.3.3-gcc11</p>
+<p>Rscript -e '
+  pdf("brms-fit3.pdf",height=8,width=10)
+  library(brms)</p>
+<h1 id="survival-regression-modeling-the-time-between-the-first">Survival regression modeling the time between the first</h1>
+<h1 id="and-second-recurrence-of-an-infection-in-kidney-patients">and second recurrence of an infection in kidney patients.</h1>
+<p>fit3 &lt;- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
+              data = kidney, family = lognormal())
+  summary(fit3)
+  plot(fit3, ask = FALSE)
+  plot(conditional_effects(fit3), ask = FALSE)
+  fit3cox &lt;- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
+                 data = kidney, family = cox)
+  summary(fit3cox)
+  plot(fit3cox, ask = FALSE)
+  dev.off()
+ ```
+Change account and $USER appropriately.
+- Error report: [_csd3.e][_csd3.e]
+- Output report: <a href="../_csd3.o">_csd3.o</a>
+- Plot: <a href="../brms-fit3.pdf">brms-fit3.pdf</a></p></div>
             </div>
         </div>
 
@@ -126,14 +196,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -198,8 +268,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2024-03-20 20:43:43.359569+00:00
--->
