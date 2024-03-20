@@ -95,56 +95,6 @@
             </li>
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#usrbinbash" class="nav-link">!/usr/bin/bash</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-job-namecsd3" class="nav-link">SBATCH --job-name=csd3</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-accountpeters-sl3-cpu" class="nav-link">SBATCH --account=PETERS-SL3-CPU</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-partitioncclake-himem" class="nav-link">SBATCH --partition=cclake-himem</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-mem28800" class="nav-link">SBATCH --mem=28800</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-time120000" class="nav-link">SBATCH --time=12:00:00</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-output_csd3o" class="nav-link">SBATCH --output=_csd3.o</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#sbatch-error_csd3e" class="nav-link">SBATCH --error=_csd3.e</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#survival-regression-modeling-the-time-between-the-first" class="nav-link">Survival regression modeling the time between the first</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#and-second-recurrence-of-an-infection-in-kidney-patients" class="nav-link">and second recurrence of an infection in kidney patients.</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
@@ -153,40 +103,7 @@
 <h1 id="motes">Motes</h1>
 <h2 id="running-a-slurm-job">Running a SLURM job</h2>
 <ul>
-<li>Script, <a href="../csd3.sb">csd3.sb</a>. </li>
-</ul>
-<p>```bash</p>
-<h1 id="usrbinbash">!/usr/bin/bash</h1>
-<h1 id="sbatch-job-namecsd3">SBATCH --job-name=<em>csd3</em></h1>
-<h1 id="sbatch-accountpeters-sl3-cpu">SBATCH --account=PETERS-SL3-CPU</h1>
-<h1 id="sbatch-partitioncclake-himem">SBATCH --partition=cclake-himem</h1>
-<h1 id="sbatch-mem28800">SBATCH --mem=28800</h1>
-<h1 id="sbatch-time120000">SBATCH --time=12:00:00</h1>
-<h1 id="sbatch-output_csd3o">SBATCH --output=_csd3.o</h1>
-<h1 id="sbatch-error_csd3e">SBATCH --error=_csd3.e</h1>
-<p>export TMPDIR=/rds/user/$USER/hpc-work/</p>
-<p>. /etc/profile.d/modules.sh
-module purge
-module load rhel7/default-ccl
-module load ceuadmin/R/4.3.3-gcc11</p>
-<p>Rscript -e '
-  pdf("brms-fit3.pdf",height=8,width=10)
-  library(brms)</p>
-<h1 id="survival-regression-modeling-the-time-between-the-first">Survival regression modeling the time between the first</h1>
-<h1 id="and-second-recurrence-of-an-infection-in-kidney-patients">and second recurrence of an infection in kidney patients.</h1>
-<p>fit3 &lt;- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
-              data = kidney, family = lognormal())
-  summary(fit3)
-  plot(fit3, ask = FALSE)
-  plot(conditional_effects(fit3), ask = FALSE)
-  fit3cox &lt;- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
-                 data = kidney, family = cox)
-  summary(fit3cox)
-  plot(fit3cox, ask = FALSE)
-  dev.off()
- ```
-Change account and $USER appropriately.</p>
-<ul>
+<li>Script, <a href="../csd3.sb">csd3.sb</a>. Use this link <a href="https://raw.githubusercontent.com/jinghuazhao/Believe/master/docs/csd3.sb">https://raw.githubusercontent.com/jinghuazhao/Believe/master/docs/csd3.sb</a> and change account and $USER appropriately.</li>
 <li>Error report: [_csd3.e][_csd3.e]</li>
 <li>Output report: <a href="../_csd3.o">_csd3.o</a></li>
 <li>Plot: <a href="../brms-fit3.pdf">brms-fit3.pdf</a></li>
