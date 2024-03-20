@@ -4,6 +4,7 @@ edit_uri: ""
 nav:
     - "": README.md
     - T2D: T2D.md
+    - Note: Notes.md
 theme:
     name: mkdocs
     nav_style: dark

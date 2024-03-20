@@ -1,0 +1,44 @@
+# Motes
+
+## Running a SLURM job
+
+- Script, [csd3.sb](csd3.sb). 
+```bash
+#!/usr/bin/bash
+
+#SBATCH --job-name=_csd3_
+#SBATCH --account=PETERS-SL3-CPU
+#SBATCH --partition=cclake-himem
+#SBATCH --mem=28800
+#SBATCH --time=12:00:00
+
+#SBATCH --output=_csd3.o
+#SBATCH --error=_csd3.e
+
+export TMPDIR=/rds/user/$USER/hpc-work/
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel7/default-ccl
+module load ceuadmin/R/4.3.3-gcc11
+
+Rscript -e '
+  pdf("brms-fit3.pdf",height=8,width=10)
+  library(brms)
+# Survival regression modeling the time between the first
+# and second recurrence of an infection in kidney patients.
+  fit3 <- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
+              data = kidney, family = lognormal())
+  summary(fit3)
+  plot(fit3, ask = FALSE)
+  plot(conditional_effects(fit3), ask = FALSE)
+  fit3cox <- brm(time | cens(censored) ~ age * sex + disease + (1|patient),
+                 data = kidney, family = cox)
+  summary(fit3cox)
+  plot(fit3cox, ask = FALSE)
+  dev.off()
+ ```
+Change account and $USER appropriately.
+- Error report: [_csd3.e][_csd3.e]
+- Output report: [_csd3.o](_csd3.o)
+- Plot: [brms-fit3.pdf](brms-fit3.pdf)
