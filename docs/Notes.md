@@ -2,11 +2,11 @@
 
 This page contains two examples and can be see from <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D>.
 
-## BGLR
+## BGLR/
 
 This folder contains data and R script for Crossa et al. (2020), see below.
 
-## brms
+## brms/
 
 At this stage, the demonstrate how to run a SLURM job on CSD3.
 
