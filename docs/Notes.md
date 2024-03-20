@@ -1,4 +1,4 @@
-# Motes
+# Notes
 
 This page contains two examples and can be see from <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D>.
 
