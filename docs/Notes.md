@@ -23,10 +23,11 @@ This implements LD-score regression, which is available from CSD3 by `module loa
 
 ## Additional resources
 
-- coxme, <https://cran.r-project.org/web/packages/coxme/index.html>, which allows for polygenic effects.
+- kinship, in [here](https://github.com/jinghuazhao/jinghuazhao.github.io/tree/master/docs/software), CRAN [archive](https://cran.r-project.org/src/contrib/Archive/kinship/) and [GitHub](https://github.com/cran/kinship).
+- coxme, <https://cran.r-project.org/web/packages/coxme/index.html>, which includes updates on kinship..
 - coxmeg, <https://github.com/lhe17/coxmeg>, which is an update to CRAN [archive](https://cran.r-project.org/src/contrib/Archive/coxmeg/).
 
-Both are R packages available under `ceuadmin/R` modules.
+All are R packages available under `ceuadmin/R` modules.
 
 ## References
 
