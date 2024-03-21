@@ -1,6 +1,6 @@
 # Notes
 
-This page contains two examples and can be see from <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D>.
+Examples and resources which can be seen from this page and <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D>.
 
 ## BGLR/
 
@@ -21,7 +21,7 @@ Change account and $USER appropriately.
 
 This implements LD-score regression, which is available from CSD3 by `module load ceuadmin/ldsc` as indicated here, <https://cambridge-ceu.github.io/csd3/Python/ldsc.html>.
 
-## Additional resources
+## Mixed effects Cox models
 
 - **kinship**, in [here](https://github.com/jinghuazhao/jinghuazhao.github.io/tree/master/docs/software), CRAN [archive](https://cran.r-project.org/src/contrib/Archive/kinship/) and [GitHub](https://github.com/cran/kinship).
 - **coxme**, <https://cran.r-project.org/web/packages/coxme/index.html>, which includes updates on **kinship**.
