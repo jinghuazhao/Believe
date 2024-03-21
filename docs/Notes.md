@@ -17,7 +17,19 @@ Change account and $USER appropriately.
 - Output report: **_csd3.o**
 - Plot: **brms-fit3.pdf**
 
+## ldsc
+
+This implements LD-score regression, which is available from CSD3 by `module load ceuadmin/ldsc` as indicated here, <https://cambridge-ceu.github.io/csd3/Python/ldsc.html>.
+
+## Additional resources
+
+- coxme, <https://cran.r-project.org/web/packages/coxme/index.html>, which allows for polygenic effects.
+- coxmeg, <https://github.com/lhe17/coxmeg>, which is an update to CRAN [archive](https://cran.r-project.org/src/contrib/Archive/coxmeg/).
+
+Both are R packages available under `ceuadmin/R` modules.
+
 ## References
 
 Crossa J, Montesinos-López OA, Pérez-Rodríguez P, Costa-Neto G, Fritsche-Neto R, Ortiz R, Martini JWR, Lillemo M, Montesinos-López A, Jarquin D, Breseghello F, Cuevas J, Rincent R. Genome and Environment Based Prediction Models and Methods of Complex Traits Incorporating Genotype × Environment Interaction. Methods Mol Biol. 2022;2467:245-283. doi: 10.1007/978-1-0716-2205-6_9. PMID: 35451779,  <https://link.springer.com/protocol/10.1007/978-1-0716-2205-6_9>.
 
+He L, Kulminski AM. Fast Algorithms for Conducting Large-Scale GWAS of Age-at-Onset Traits Using Cox Mixed-Effects Models. Genetics. 2020 May;215(1):41-58. doi: 10.1534/genetics.119.302940. Epub 2020 Mar 4. Erratum in: Genetics. 2020 Aug;215(4):1191. PMID: 32132097; PMCID: PMC7198273, <https://academic.oup.com/genetics/article/215/1/41/5930490>.
