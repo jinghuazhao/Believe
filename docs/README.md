@@ -4,7 +4,7 @@ Web: <https://jinghuazhao.github.io/Believe>
 
 CSD3 location: `~/rds/rds-jmmh2-post_qc_data/believe`
 
-- TOPMed imputation data by Regeneron for the full ~72k participants. `genotype/imputed/*Freeze_Two.GxS.TOPMED_dosages*`, incl. the .pgen-GT files, .pgen-HDS files and .bgen files pending.) instead of `Freeze_One`.
+- TOPMed imputation data by Regeneron for the full ~72k participants. `genotype/imputed/*Freeze_Two.GxS.TOPMED_dosages*` (the .pgen-GT files, .pgen-HDS files and .bgen files pending.).
 - PCs (counterpart to the sequenced variants, `genotype/genomewide/plink/aug_2023`??).
 
 A growing list of scripts.
