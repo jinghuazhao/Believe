@@ -1,6 +1,6 @@
 # Notes
 
-Examples and resources which can be seen from this page and <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D>.
+See also <https://github.com/jinghuazhao/Believe/tree/master/docs/T2D> for additional files.
 
 ## BGLR/
 
