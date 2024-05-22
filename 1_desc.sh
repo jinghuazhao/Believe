@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+export believe=~/rds/rds-jmmh2-post_qc_data/believe
 export believe=~/rds/post_qc_data/believe
 export X=CAMBRIDGE-BELIEVE_Freeze_One.GxS.chrX.vcf.gz
 export bfile=${believe}/genotype/genomewide/plink/may_2022/CAMBRIDGE-BELIEVE_Freeze_One.GxS
