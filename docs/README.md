@@ -2,7 +2,10 @@
 
 Web: <https://jinghuazhao.github.io/Believe>
 
-CSD3 location: `~/rds/rds-jmmh2-post_qc_data/believe`
+## CSD3 location
+
+- `~/rds/rds-jmmh2-post_qc_data/believe`
+- `~/rds/rds-jmmh2-post_qc_data/believe/reference_files/genetic/pLOF/pLOF_annotation_may_2022`
 
 - TOPMed imputation data by Regeneron for the full ~72k participants. `genotype/imputed/*Freeze_Two.GxS.TOPMED_dosages*` (.pgen-GT files, .pgen-HDS files and .bgen files pending).
 - PCs (counterpart to the sequenced variants, `genotype/genomewide/plink/aug_2023`??).
