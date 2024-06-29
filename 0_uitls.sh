@@ -40,6 +40,7 @@ adat <- SomaDataIO::read_adat(file.path(somalogic,"Batch1_Batch2_combined",
         "SS-2218747_SS-2225082_Combined_v4.1_EDTAPlasma.hybNorm.medNormInt.plateScale.calibration.anmlQC.qcCheck.adat"))
 anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch1_Batch2_combined",
            "SS-2218747_SS-2225082_Combined_v4.1_EDTAPlasma.hybNorm.medNormInt.plateScale.calibration.anmlQC.qcCheck.anmlSMP.adat"))
+adat_eset <- SomaDataIO::adat2eSet(adat)
 
 # SSM-00060 - Rev 1.0 - Data Standardization and File Specification Technical Note (002).pdf'
 # Test Information Guides Plasma PAV/
