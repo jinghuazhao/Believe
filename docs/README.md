@@ -13,8 +13,13 @@ Web: <https://jinghuazhao.github.io/Believe>
 A growing list of scripts.
 
 ```
+0_utils.sh
 1_desc.sh
 ```
+
+## 0. Utilities
+
+`0_utils.sh` reads information such as Olink Parquet and SomaLogic adat files.
 
 ## 1. Descriptive analysis
 
