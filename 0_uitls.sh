@@ -48,6 +48,7 @@ anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch1_Batch2_combined",
 position <- function()
 {
   options(width=200)
+  suppressMessages(library(SomaScan.db))
   pos_sel <- select(SomaScan.db, "11138-16", columns = c("SYMBOL", "ENTREZID", "ENSEMBL"))
   keys(EnsDb.Hsapiens.v75)[1:10L]
   grep("ENSEMBL", columns(SomaScan.db), value = TRUE)
