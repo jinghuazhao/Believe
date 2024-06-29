@@ -22,4 +22,5 @@ A growing list of scripts.
 
 ## URLs
 
-[SomaLogic](https://github.com/somalogic)
+- Olink, <https://github.com/Olink-Proteomics>
+- SomaLogic, <https://github.com/somalogic>
