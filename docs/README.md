@@ -26,7 +26,7 @@ A growing list of scripts.
 
 `1_desc.sh` is to extract data and to protoype some `canonical options` for handling relatedness in the study.
 
-## URLs
+## A. URLs
 
-- Olink, <https://github.com/Olink-Proteomics>
+- Olink, <https://github.com/Olink-Proteomics>, <https://cran.r-project.org/web/packages/OlinkAnalyze/index.html>
 - SomaLogic, <https://github.com/somalogic>
