@@ -23,6 +23,6 @@ git add docs
 git add README.md
 git add mkdocs.yml
 git commit -m "Site files"
-git add 0_utils.sh 1_desc.sh
+git add 0_uitls.sh 1_desc.sh
 git commit -m "script"
 git push
