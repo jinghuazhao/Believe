@@ -4,6 +4,7 @@ Web: <https://jinghuazhao.github.io/Believe>
 
 ## CSD3 location
 
+- `~/rds/pre_qc_data/believe`
 - `~/rds/rds-jmmh2-post_qc_data/believe`
 - `~/rds/rds-jmmh2-post_qc_data/believe/reference_files/genetic/pLOF/pLOF_annotation_may_2022`
 
