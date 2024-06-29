@@ -20,16 +20,16 @@ somalogic <- Sys.getenv("somalogic")
 # batch 1, SS-2218747_SQS.pdf
 adat_samples <- read.delim(file.path(somalogic,"Batch1","Batch1_adat_samplenames.tsv"))
 snmlSMP_samples <- read.delim(file.path(somalogic,"Batch1","Batch1_adat_samplenames_anmlSMP.tsv"))
-SomaSignals <- read.delim(file.path(somalogic,"Batch1","SS-2218747_SomaSignals_20220916_v4.tsv"))
+SomaSignals <- read.delim(file.path(somalogic,"Batch1","SS-2218747_SomaSignals_20220916_v4.tsv"),skip=3)
 adat <- SomaDataIO::read_adat(file.path(somalogic,"Batch1",
                               "SS-2218747_v4.1_EDTAPlasma.hybNorm.medNormInt.plateScale.calibration.anmlQC.qcCheck.adat"))
-anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch2",
+anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch1",
                               "SS-2218747_v4.1_EDTAPlasma.hybNorm.medNormInt.plateScale.calibration.anmlQC.qcCheck.anmlSMP.adat"))
 
 # Batch 2, SS-2225082_SQS.pdf
 adat_samples <- read.delim(file.path(somalogic,"Batch2","Batch2_adat_samplenames.tsv"))
 snmlSMP_samples <- read.delim(file.path(somalogic,"Batch2","Batch2_adat_samplenames_anmlSMP.tsv"))
-SomaSignals <- read.delim(file.path(somalogic,"Batch12,"SS-2225082_SomaSignals_20220916_v4.tsv"))
+SomaSignals <- read.delim(file.path(somalogic,"Batch2","SS-2225082_SomaSignals_20220916_v4.tsv"),skip=3)
 adat <- SomaDataIO::read_adat(file.path(somalogic,"Batch2",
                               "SS-2225082_v4.1_EDTAPlasma.hybNorm.medNormInt.plateScale.calibration.anmlQC.qcCheck.adat"))
 anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch2",
@@ -84,4 +84,3 @@ if (FALSE)
     scale_color_manual(values = c('turquoise3', 'red'))
 }
 '
-
