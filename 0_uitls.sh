@@ -8,7 +8,7 @@ export olink=${pre_qc}/olink_proteomics
 export somalogic=${pre_qc}/somalogic_proteomics
 
 Rscript -e '
-library(parquet)
+library(arrow)
 olink <- Sys.getenv("olink")
 npx <- read_parquet("Q-08620_Di_Angelantonio_NPX_2023-12-27.parque",
                     n_threads = 4,
