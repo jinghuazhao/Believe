@@ -45,6 +45,19 @@ anmlSMP <- SomaDataIO::read_adat(file.path(somalogic,"Batch1_Batch2_combined",
 # Test Information Guides Plasma PAV/
 # Test Information Guides Plasma SST/
 
+position <- function()
+{
+  options(width=200)
+  pos_sel <- select(SomaScan.db, "11138-16", columns = c("SYMBOL", "ENTREZID", "ENSEMBL"))
+  keys(EnsDb.Hsapiens.v75)[1:10L]
+  grep("ENSEMBL", columns(SomaScan.db), value = TRUE)
+  columns(EnsDb.Hsapiens.v75)
+  pos_res <- select(EnsDb.Hsapiens.v75, keys = "ENSG00000020633",
+                    columns = c("GENEBIOTYPE", "SEQCOORDSYSTEM", "GENEID",
+                                "PROTEINID", "PROTDOMSTART", "PROTDOMEND"))
+  merge(pos_sel, pos_res, by.x = "ENSEMBL", by.y = "GENEID")
+}
+
 if (FALSE)
 {
   Sys.setenv(LIBARROW_MINIMAL = "false") # all optional features including gzip
