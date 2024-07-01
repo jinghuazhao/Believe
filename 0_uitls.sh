@@ -16,7 +16,7 @@ library(OlinkAnalyze)
 olink <- Sys.getenv("olink")
 npx <- read_parquet(file.path(olink,"Q-08620_Di_Angelantonio_NPX_2023-12-27.parquet"))
 table(npx$SampleType)
-npx[c("SampleID","OlinkID","PCNormalizedNPX","Count","NPX","UniProt","AssayQC","SampleQC")]
+npx[c("SampleID","OlinkID","Panel","PCNormalizedNPX","Count","NPX","UniProt","AssayQC","SampleQC")]
 # Q-08620_Di_Angelantonio_Analysis_Report_2023-12-27.pdf
 # Q-08620_DiAngelantonio_-_Olink_-_Explore_HT_SampleForm_v2.0.pdf
 # Q-08620_DiAngelantonio_-_Olink_-_Sample_manifest_-_plate_Explore_HT_20231120.xlsx
@@ -24,10 +24,10 @@ npx[c("SampleID","OlinkID","PCNormalizedNPX","Count","NPX","UniProt","AssayQC","
 if (FALSE)
 {
   npx_data <- read_NPX(filename = file.path(olink,"some.xlsx"))
-  olink_dist_plot(npx,
+  olink_dist_plot(npx_data,
     theme(axis.text.x = element_blank(),
           axis.ticks.x = element_blank()) +
-    scale_fill_manual(values = c('turquoise3', 'red')))
+    scale_fill_manual(values = c('turquoise3', 'red'))
   bridge_samples <- intersect(x = npx_data1$SampleID, y = npx_data2$SampleID)
   bridge_normalized_data <- olink_normalization(df1 = npx_data1,
                             df2 = npx_data2,
@@ -44,7 +44,7 @@ if (FALSE)
     scale_color_manual(values = c('turquoise3', 'red'))
 }
 
-# SomaLogic'
+# SomaLogic
 suppressMessages(library(SomaDataIO))
 somalogic <- Sys.getenv("somalogic")
 # batch 1, SS-2218747_SQS.pdf
