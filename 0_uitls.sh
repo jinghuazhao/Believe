@@ -7,9 +7,9 @@ export nightingale=${pre_qc}/nightingale_nmr
 export olink=${pre_qc}/olink_proteomics
 export somalogic=${pre_qc}/somalogic_proteomics
 
-Rscript -e '
+R --no-save <<END
 options(width=200)
-supppressMessages)library(dplyr))
+suppressMessages(library(dplyr))
 # Olink
 Sys.setenv(LIBARROW_MINIMAL = "false") # all optional features including gzip
 Sys.setenv(ARROW_WITH_GZIP = "ON") # only gzip
@@ -17,35 +17,12 @@ library(arrow)
 library(OlinkAnalyze)
 olink <- Sys.getenv("olink")
 npx <- read_parquet(file.path(olink,"Q-08620_Di_Angelantonio_NPX_2023-12-27.parquet"))
-table(npx$SampleType)
+table(with(npx,SampleType))
 npx[c("SampleID","OlinkID","Panel","PCNormalizedNPX","Count","NPX","UniProt","AssayQC","SampleQC")] %>%
 filter(NPX!=0)
 # Q-08620_Di_Angelantonio_Analysis_Report_2023-12-27.pdf
 # Q-08620_DiAngelantonio_-_Olink_-_Explore_HT_SampleForm_v2.0.pdf
 # Q-08620_DiAngelantonio_-_Olink_-_Sample_manifest_-_plate_Explore_HT_20231120.xlsx
-
-if (FALSE)
-{
-  npx_data <- read_NPX(filename = file.path(olink,"some.xlsx"))
-  olink_dist_plot(npx_data,
-    theme(axis.text.x = element_blank(),
-          axis.ticks.x = element_blank()) +
-    scale_fill_manual(values = c('turquoise3', 'red'))
-  bridge_samples <- intersect(x = npx_data1$SampleID, y = npx_data2$SampleID)
-  bridge_normalized_data <- olink_normalization(df1 = npx_data1,
-                            df2 = npx_data2,
-                            overlapping_samples_df1 = bridge_samples,
-                            df1_project_nr = "20200001",
-                            df2_project_nr = "20200002",
-                            reference_project = "20200001")
-  ttest_results <- olink_ttest(df = npx_data, variable = "Treatment")
-  ttest_sign <- ttest_results %>%
-      head(n=10) %>%
-      pull(OlinkID)
-  olink_volcano_plot(p.val_tbl = ttest_results,
-    olinkid_list = ttest_sign) +
-    scale_color_manual(values = c('turquoise3', 'red'))
-}
 
 # SomaLogic
 suppressMessages(library(SomaDataIO))
@@ -78,7 +55,7 @@ library(Biobase)
 class(adat)
 dim(adat)
 methods(class="soma_adat")
-table(adat$SampleType)
+table(with(adat,SampleType))
 
 cleanData <- adat |>
   filter(SampleType == "Sample") |>
@@ -90,7 +67,7 @@ adat_eset <- SomaDataIO::adat2eSet(cleanData)
 protData <- exprs(adat_eset)
 clinData <- pData(adat_eset)
 
-# SSM-00060 - Rev 1.0 - Data Standardization and File Specification Technical Note (002).pdf'
+# SSM-00060 - Rev 1.0 - Data Standardization and File Specification Technical Note (002).pdf
 # Test Information Guides Plasma PAV/
 # Test Information Guides Plasma SST/
 
@@ -130,3 +107,6 @@ position <- function()
   }
   save(results,file="work/SomaScan.rda")
 }
+
+position()
+END
