@@ -85,10 +85,10 @@ keys(EnsDb.Hsapiens.v75)[1:10L]
 grep("ENSEMBL", columns(SomaScan.db), value = TRUE)
 columns(EnsDb.Hsapiens.v75)
 pos_sel <- SomaScan.db::select(SomaScan.db, "11138-16", columns = c("PMID","ENTREZID","SYMBOL","ENSEMBL"))
-pos_res <- SomaScan.db::select(EnsDb.Hsapiens.v75, keys = "ENSG00000020633",
-                               columns = c("GENEID","TXNAME","SEQNAME","TXSEQSTART","TXSEQEND"))
+pos_col <- c("GENEID","GENESEQEND","GENESEQSTART","TXNAME","SEQNAME","TXSEQSTART","TXSEQEND","UNIPROTID")
+pos_res <- SomaScan.db::select(EnsDb.Hsapiens.v75, keys = "ENSG00000020633",columns = pos_col)
 m <- merge(pos_sel, pos_res, by.x = "ENSEMBL", by.y = "GENEID")
-mm <- rename(m,chrom=SEQNAME,start=TXSEQSTART,end=TXSEQEND) %>%
+mm <- dplyr::rename(m,chrom=SEQNAME,start=TXSEQSTART,end=TXSEQEND) %>%
       valr::bed_merge()
 numCores <- 8
 cl <- makeCluster(numCores)
