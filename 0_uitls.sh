@@ -71,42 +71,53 @@ clinData <- pData(adat_eset)
 # Test Information Guides Plasma PAV/
 # Test Information Guides Plasma SST/
 
-position <- function()
-{
-  options(width=200)
-  suppressMessages(library(SomaScan.db))
-  suppressMessages(library(EnsDb.Hsapiens.v75))
-  library(org.Hs.eg.db)
-  library(AnnotationDbi)
-  library(TxDb.Hsapiens.UCSC.hg38.knownGene)
-  keys(SomaScan.db)
-  keytypes(SomaScan.db)
-  columns(SomaScan.db)
-  select(SomaScan.db, keys = "18342-2", columns = c("ENTREZID","SYMBOL","UNIPROT"))
-  keys(EnsDb.Hsapiens.v75)[1:10L]
-  grep("ENSEMBL", columns(SomaScan.db), value = TRUE)
-  columns(EnsDb.Hsapiens.v75)
-  pos_sel <- select(SomaScan.db, "11138-16", columns = c("PMID","ENTREZID","SYMBOL","ENSEMBL"))
-  pos_res <- select(EnsDb.Hsapiens.v75, keys = "ENSG00000020633",
-                    columns = c("GENEID","TXNAME","SEQNAME","TXSEQSTART","TXSEQEND"))
-  merge(pos_sel, pos_res, by.x = "ENSEMBL", by.y = "GENEID")
-# loop-over
-  results <- data.frame()
-  for (key in keys(SomaScan.db)) {
-    pos_sel <- select(SomaScan.db, keys = key, columns = c("PMID", "ENTREZID", "SYMBOL", "ENSEMBL"))
-    if (!is.null(pos_sel$ENSEMBL) && any(!is.na(pos_sel$ENSEMBL))) {
-      ensembl_ids <- pos_sel$ENSEMBL[!is.na(pos_sel$ENSEMBL)]
-      for (ensembl_id in unique(ensembl_ids)) {
-        pos_res <- select(EnsDb.Hsapiens.v75, keys = ensembl_id,
-                          columns = c("GENEID", "TXNAME", "SEQNAME", "TXSEQSTART", "TXSEQEND"))
-        merged_res <- merge(pos_sel[pos_sel$ENSEMBL == ensembl_id, ], pos_res,
-                            by.x = "ENSEMBL", by.y = "GENEID", all = TRUE)
-        results <- rbind(results, merged_res)
-      }
-    }
+options(width=200)
+suppressMessages(library(dplyr))
+suppressMessages(library(SomaScan.db))
+suppressMessages(library(EnsDb.Hsapiens.v75))
+library(AnnotationDbi)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+library(valr)
+keys(SomaScan.db)
+keytypes(SomaScan.db)
+columns(SomaScan.db)
+keys(EnsDb.Hsapiens.v75)[1:10L]
+grep("ENSEMBL", columns(SomaScan.db), value = TRUE)
+columns(EnsDb.Hsapiens.v75)
+pos_sel <- SomaScan.db::select(SomaScan.db, "11138-16", columns = c("PMID","ENTREZID","SYMBOL","ENSEMBL"))
+pos_res <- SomaScan.db::select(EnsDb.Hsapiens.v75, keys = "ENSG00000020633",
+                               columns = c("GENEID","TXNAME","SEQNAME","TXSEQSTART","TXSEQEND"))
+m <- merge(pos_sel, pos_res, by.x = "ENSEMBL", by.y = "GENEID")
+mm <- rename(m,chrom=SEQNAME,start=TXSEQSTART,end=TXSEQEND) %>%
+      valr::bed_merge()
+numCores <- 8
+cl <- makeCluster(numCores)
+clusterEvalQ(cl, library(SomaScan.db))
+clusterEvalQ(cl, library(EnsDb.Hsapiens.v75))
+clusterEvalQ(cl, library(dplyr))
+clusterEvalQ(cl, library(valr))
+results <- data.frame()
+results <- mclapply(keys(SomaScan.db), function(key) {
+  pos_sel <- SomaScan.db::select(SomaScan.db, keys = key,
+                             columns = c("PMID", "ENTREZID", "SYMBOL", "ENSEMBL"))
+  if (!is.null(pos_sel$ENSEMBL) & any(!is.na(pos_sel$ENSEMBL))) {
+    ensembl_ids <- pos_sel$ENSEMBL[!is.na(pos_sel$ENSEMBL)]
+    sapply(unique(ensembl_ids), function(ensembl_id) {
+      pos_res <- SomaScan.db::select(EnsDb.Hsapiens.v75, keys = ensembl_id,
+                                 columns = c("GENEID", "SEQNAME", "TXSEQSTART", "TXSEQEND"))
+      merged_res <- merge(pos_sel[pos_sel$ENSEMBL == ensembl_id, ], pos_res,
+                          by.x = "ENSEMBL", by.y = "GENEID", all = TRUE)
+      genenames <- unique(merged_res$SYMBOL)
+      regions <- merged_res %>%
+                 dplyr::rename(chrom=SEQNAME,start=TXSEQSTART,end=TXSEQEND) %>%
+                 valr::bed_merge()
+      data.frame(genename=genenames,region=regions)
+    })
+  } else {
+    NULL
   }
-  save(results,file="work/SomaScan.rda")
-}
-
-position()
+}, mc.cores = numCores)
+results <- do.call(rbind, results)
+stopCluster(cl)
+save(results, file="work/SomaScan.RData")
 END
