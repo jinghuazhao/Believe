@@ -4,7 +4,7 @@
 #SBATCH --output=progress_%A_%a.out     # Standard output and error log
 #SBATCH --error=error_%A_%a.log         # Error log (if separated from standard output)
 #SBATCH --time=05:00:00                 # Time limit hrs:min:sec
-#SBATCH --partition=icelake             # Partition to submit to
+#SBATCH --partition=icelake-himem       # Partition to submit to
 #SBATCH --ntasks=1                      # Number of tasks (processes)
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --cpus-per-task=10              # Number of CPU cores per task
@@ -21,6 +21,23 @@ module load ceuadmin/gcta/1.94.1
 
 export typed=/rds/project/rds-pNR2rM6BWWA//believe/genotype/genomewide/plink/aug_2023/CAMBRIDGE-BELIEVE_Freeze_Two.GxS
 export CHR=${SLURM_ARRAY_TASK_ID}       # Run GCTA for the specific chromosome
-gcta64 --bfile ${typed} \
-       --chr $CHR --maf 0.05 --make-grm-bin --thread-num 10 \
-       --out ${HPC_WORK}/believe_gcta${CHR}
+
+function all_snps()
+{
+  gcta64 --bfile ${typed} \
+         --chr $CHR --maf 0.05 --make-grm-bin --thread-num 10 \
+         --out ${HPC_WORK}/believe_gcta${CHR}
+}
+
+function select_snp()
+{
+  module load ceuadmin/plink/2.00a3.3
+  plink2 --bfile ${typed} \
+         --chr ${CHR} --geno 0.1 --mind 0.1 --maf 0.05 --indep-pairwise 1000kb 1 0.8 \
+         --out ${HPC_WORK}/believe_gcta_snplist${CHR}
+  gcta64 --bfile ${typed} \
+         --extract ${HPC_WORK}/believe_gcta_snplist${CHR}.prune.in --make-grm-bin --thread-num 10 \
+         --out ${HPC_WORK}/believe_gcta${CHR}
+}
+
+all_snps
