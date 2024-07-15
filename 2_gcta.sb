@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#SBATCH --job-name=gcta_believe         # Job name
+#SBATCH --output=progress_%A_%a.out     # Standard output and error log
+#SBATCH --error=error_%A_%a.log         # Error log (if separated from standard output)
+#SBATCH --time=05:00:00                 # Time limit hrs:min:sec
+#SBATCH --partition=icelake             # Partition to submit to
+#SBATCH --ntasks=1                      # Number of tasks (processes)
+#SBATCH --nodes=1                       # Number of nodes
+#SBATCH --cpus-per-task=10              # Number of CPU cores per task
+#SBATCH --mem=55000                     # Memory per node in MB
+#SBATCH --mail-type=START,FAIL          # Notifications for job done & fail
+#SBATCH --mail-user=am3194@cam.ac.uk    # Email to which notifications are sent
+#SBATCH --account=BUTTERWORTH-SL3-CPU   # Account name
+#SBATCH --array=1-22                    # Job array for chromosomes 1 to 22module load gcta# Set the chromosome number based on the SLURM array task ID
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+module load ceuadmin/gcta/1.94.1
+
+export typed=/rds/project/rds-pNR2rM6BWWA//believe/genotype/genomewide/plink/aug_2023/CAMBRIDGE-BELIEVE_Freeze_Two.GxS
+export CHR=${SLURM_ARRAY_TASK_ID}       # Run GCTA for the specific chromosome
+gcta64 --bfile ${typed} \
+       --chr $CHR --maf 0.05 --make-grm-bin --thread-num 10 \
+       --out ${HPC_WORK}/believe_gcta${CHR}
