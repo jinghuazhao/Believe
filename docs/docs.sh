@@ -9,6 +9,9 @@ function github_pages()
 # pip install mkdocs-mermaid2-plugin
 }
 
+module load ceuadmin/libssh/0.10.6-icelake
+module load ceuadmin/openssh/9.7p1-icelake
+
 github_pages
 mkdocs build
 mkdocs gh-deploy
