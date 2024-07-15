@@ -21,11 +21,12 @@ module load ceuadmin/gcta/1.94.1
 
 export typed=/rds/project/rds-pNR2rM6BWWA//believe/genotype/genomewide/plink/aug_2023/CAMBRIDGE-BELIEVE_Freeze_Two.GxS
 export CHR=${SLURM_ARRAY_TASK_ID}       # Run GCTA for the specific chromosome
+export HPC_WORK=/rds/user/${USER}/hpc-work
 
 function all_snps()
 {
   gcta64 --bfile ${typed} \
-         --chr $CHR --maf 0.05 --make-grm-bin --thread-num 10 \
+         --chr ${CHR} --maf 0.05 --make-grm-bin --thread-num 10 \
          --out ${HPC_WORK}/believe_gcta${CHR}
 }
 
