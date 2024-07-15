@@ -16,6 +16,7 @@ A growing list of scripts.
 ```
 0_utils.sh
 1_desc.sh
+2_gcta.sb
 ```
 
 ## 0. Utilities
