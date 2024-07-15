@@ -9,11 +9,6 @@ function github_pages()
 # pip install mkdocs-mermaid2-plugin
 }
 
-if [ "$(uname -n | sed 's/-[0-9]*$//')" == "login-q" ]; then
-   module load ceuadmin/libssh/0.10.6-icelake
-   module load ceuadmin/openssh/9.7p1-icelake
-fi
-
 github_pages
 mkdocs build
 mkdocs gh-deploy
@@ -23,6 +18,6 @@ git add docs
 git add README.md
 git add mkdocs.yml
 git commit -m "Site files"
-git add 0_uitls.sh 1_desc.sh
+git add 0_uitls.sh 1_desc.sh 2_gcta.sb
 git commit -m "script"
 git push
